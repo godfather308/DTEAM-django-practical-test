@@ -1,0 +1,197 @@
+[
+  {
+    "model": "main.skill",
+    "pk": 1,
+    "fields": {
+      "skill": "Django"
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 2,
+    "fields": {
+      "skill": "Flask"
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 3,
+    "fields": {
+      "skill": "FastAPI"
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 4,
+    "fields": {
+      "skill": "Celery"
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 5,
+    "fields": {
+      "skill": "PostgreSQL"
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 6,
+    "fields": {
+      "skill": "SQLAlchemy"
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 7,
+    "fields": {
+      "skill": "Selenium"
+    }
+  },
+  {
+    "model": "main.cv",
+    "pk": 1,
+    "fields": {
+      "first_name": "John",
+      "last_name": "Cena",
+      "bio": "Great Python developer and professional wrestler.",
+      "skills": [1, 4, 5]
+    }
+  },
+  {
+    "model": "main.cv",
+    "pk": 2,
+    "fields": {
+      "first_name": "Cardi",
+      "last_name": "B",
+      "bio": "Excellent Flask developer with strong analytical mindset.",
+      "skills": [2, 6, 7]
+    }
+  },
+  {
+    "model": "main.cv",
+    "pk": 3,
+    "fields": {
+      "first_name": "Test",
+      "last_name": "User",
+      "bio": "Just a basic test user.",
+      "skills": [3, 4, 5]
+    }
+  },
+  {
+    "model": "main.project",
+    "pk": 1,
+    "fields": {
+      "project": "WWE",
+      "description": "Wrestling project.",
+      "start_date": "2001-01-01",
+      "end_date": null,
+      "cv": 1
+    }
+  },
+  {
+    "model": "main.project",
+    "pk": 2,
+    "fields": {
+      "project": "Test project",
+      "description": "Basic test project.",
+      "start_date": "2024-06-01",
+      "end_date": "2025-02-01",
+      "cv": 3
+    }
+  },
+  {
+    "model": "main.project",
+    "pk": 3,
+    "fields": {
+      "project": "Atlantic Records",
+      "description": "Present Cardi B label",
+      "start_date": "2017-03-01",
+      "end_date": null,
+      "cv": 2
+    }
+  },
+  {
+    "model": "main.project",
+    "pk": 4,
+    "fields": {
+      "project": "KSR Group",
+      "description": "First Cardi B label",
+      "start_date": "2015-03-01",
+      "end_date": "2017-02-01",
+      "cv": 2
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 1,
+    "fields": {
+      "contact": "johncena@wwe.com",
+      "option": "email",
+      "cv": 1
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 2,
+    "fields": {
+      "contact": "cardi@b.com",
+      "option": "email",
+      "cv": 2
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 3,
+    "fields": {
+      "contact": "testuser@example.com",
+      "option": "email",
+      "cv": 3
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 4,
+    "fields": {
+      "contact": "111001110011",
+      "option": "phone",
+      "cv": 1
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 5,
+    "fields": {
+      "contact": "111001110012",
+      "option": "phone",
+      "cv": 2
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 6,
+    "fields": {
+      "contact": "111001110013",
+      "option": "phone",
+      "cv": 3
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 7,
+    "fields": {
+      "contact": "https://www.linkedin.com/testuser",
+      "option": "linkedin",
+      "cv": 3
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 8,
+    "fields": {
+      "contact": "https://github.com/testuser",
+      "option": "github",
+      "cv": 3
+    }
+  }
+]

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ cv.first_name }} {{ cv.last_name }} - CV{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-5">
+                <h1>{{ cv.first_name }} {{ cv.last_name }}</h1>
+                <hr>
+            </div>
+
+            <div class="mb-5">
+                <h2>Summary</h2>
+                <hr>
+                <p>{{ cv.bio }}</p>
+            </div>
+
+            <div class="mb-5">
+                <h2>Skills</h2>
+                <hr>
+                <div class="mb-2">
+                    {% for skill in cv.skills.all %}
+                        <span class="badge badge-pill badge-dark bg-secondary">{{ skill.skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h2>Projects</h2>
+                <hr>
+                <div class="row ms-auto">
+                    {% for project in cv.projects.all %}
+                        <div class="d-flex justify-content-between">
+                            <h3 class="card-title">{{ project.project }}</h3>
+                            <p>
+                                <span class="badge rounded-pill bg-secondary">{{ project.start_date|date:"M, Y" }} - {{ project.end_date|date:"M, Y"|default:"now" }}</span>
+                            </p>
+                        </div>
+                        <p class="card-text">{{ project.description }}</p>
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3>Contacts</h3>
+                <hr>
+                <div class="row">
+                    {% for contact in cv.contacts.all %}
+                        <p><strong>{{ contact.option.capitalize }}:</strong> {{ contact.contact }}</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <a href="{% url 'main:cv_list_view' %}" class="btn btn-dark">Go back</a>
+        </div>
+    </div>
+{% endblock %} 
