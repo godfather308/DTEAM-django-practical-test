@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "cvproject"
+version = "0.1.0"
+package-mode = false
+description = ""
+authors = ["Andrii Demchenko <andriidem308@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+django = ">=5.2.1,<6.0.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
