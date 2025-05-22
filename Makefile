@@ -18,4 +18,4 @@ remove_data:
 	$(MANAGE) flush
 
 run_tests:
-	$(MANAGE) test main.tests api.tests
+	$(MANAGE) test main.tests api.tests audit.tests

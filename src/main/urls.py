@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import CVListView, CVDetailView, cv_download_pdf
+
+from .views import CVDetailView, CVListView, cv_download_pdf
 
 app_name = "main"
 
