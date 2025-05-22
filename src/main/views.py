@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView, ListView
 
 from services.pdf_service import get_pdf_filename, html_template_to_pdf
@@ -31,3 +31,8 @@ def cv_download_pdf(request, pk):
     response = HttpResponse(pdf_file, content_type="application/pdf")
     response["Content-Disposition"] = f'attachment; filename="{pdf_filename}"'
     return response
+
+
+def settings_view(request):
+    return render(request, "main/settings.html")
+

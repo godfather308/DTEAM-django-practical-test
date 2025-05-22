@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Settings</title>
+
+    <style>
+        .no-bullets {
+            list-style-type: none
+        }
+    </style>
+</head>
+<body>
+    <h1>Settings</h1>
+    <ul class="no-bullets">
+        <li><strong>SECRET_KEY:</strong> {{ settings.SECRET_KEY }}</li>
+        <li><strong>DEBUG:</strong> {{ settings.DEBUG }}</li>
+        <li><strong>ALLOWED_HOSTS:</strong> {{ settings.ALLOWED_HOSTS }}</li>
+        <li>
+            <strong>INSTALLED_APPS:</strong>
+            <ul>
+                {% for app in settings.INSTALLED_APPS %}
+                    <li>{{ app }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li><strong>LANGUAGE_CODE:</strong> {{ settings.LANGUAGE_CODE }}</li>
+        <li><strong>TIME_ZONE:</strong> {{ settings.TIME_ZONE }}</li>
+        <li><strong>USE_I18N:</strong> {{ settings.USE_I18N }}</li>
+        <li><strong>USE_TZ:</strong> {{ settings.USE_TZ }}</li>
+        <li><strong>STATIC_URL:</strong> {{ settings.STATIC_URL }}</li>
+        <li><strong>DEFAULT_AUTO_FIELD:</strong> {{ settings.DEFAULT_AUTO_FIELD }}</li>
+    </ul>
+</body>
+</html>
