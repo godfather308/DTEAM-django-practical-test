@@ -54,9 +54,21 @@
 
             </div>
 
-            <div class="mb5 d-flex justify-content-between">
-                <a href="{% url 'main:cv_list_view' %}" class="btn btn-dark">Go back</a>
-                <a href="{% url 'main:cv_download_pdf' pk=cv.pk %}" class="btn btn-danger">Download PDF</a>
+            <div class="mb5 d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="{% url 'main:cv_list_view' %}" class="btn btn-dark">Go back</a>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <form method="POST" action="{% url 'main:cv_send_email' cv.id %}">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" required >
+                          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Send</button>
+                        </div>
+                    </form>
+                    <a href="{% url 'main:cv_download_pdf' pk=cv.pk %}" class="btn btn-danger">Download PDF</a>
+                </div>
             </div>
         </div>
     </div>
