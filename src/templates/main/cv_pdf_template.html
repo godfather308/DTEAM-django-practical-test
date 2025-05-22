@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_wo_navbar.html' %}
 
 {% block title %}{{ cv.first_name }} {{ cv.last_name }} - CV{% endblock %}
 
@@ -34,7 +34,7 @@
                         <div class="d-flex justify-content-between">
                             <h3 class="card-title">{{ project.project }}</h3>
                             <p>
-                                <span class="badge rounded-pill bg-secondary">{{ project.start_date|date:"M, Y" }} - {{ project.end_date|date:"M, Y"|default:"now" }}</span>
+                                <span>{{ project.start_date|date:"M, Y" }} - {{ project.end_date|date:"M, Y"|default:"now" }}</span>
                             </p>
                         </div>
                         <p class="card-text">{{ project.description }}</p>
@@ -51,12 +51,6 @@
                         <p><strong>{{ contact.option.capitalize }}:</strong> {{ contact.contact }}</p>
                     {% endfor %}
                 </div>
-
-            </div>
-
-            <div class="mb5 d-flex justify-content-between">
-                <a href="{% url 'main:cv_list_view' %}" class="btn btn-dark">Go back</a>
-                <a href="{% url 'main:cv_download_pdf' pk=cv.pk %}" class="btn btn-danger">Download PDF</a>
             </div>
         </div>
     </div>
