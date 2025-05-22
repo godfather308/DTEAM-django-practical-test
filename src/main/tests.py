@@ -1,6 +1,7 @@
-from django.test import TestCase, Client
+from django.test import Client, TestCase
 from django.urls import reverse
-from .models import Contact, CV, Project, Skill
+
+from .models import CV, Contact, Project, Skill
 
 
 class ViewsTest(TestCase):

@@ -37,7 +37,6 @@ class Project(models.Model):
         return self.project
 
 
-
 class Contact(models.Model):
     class ContactOption(models.TextChoices):
         EMAIL = 'email'
