@@ -1,9 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import DetailView, ListView
 
+from services.email_service import is_email_valid
 from services.pdf_service import get_pdf_filename, html_template_to_pdf
 from .models import CV
+from .tasks.email_tasks import send_cv_pdf
 
 
 class CVListView(ListView):
@@ -31,6 +33,19 @@ def cv_download_pdf(request, pk):
     response = HttpResponse(pdf_file, content_type="application/pdf")
     response["Content-Disposition"] = f'attachment; filename="{pdf_filename}"'
     return response
+
+
+def cv_send_email(request, pk):
+    if request.method != "POST":
+        return HttpResponse("Invalid request method.", status=400)
+
+    email = request.POST.get("email")
+    if not email or not is_email_valid(email):
+        return HttpResponse("Invalid email address.", status=400)
+
+    send_cv_pdf.delay('main/cv_pdf_template.html', pk, email)
+
+    return redirect('main:cv_detail_view', pk=pk)
 
 
 def settings_view(request):
