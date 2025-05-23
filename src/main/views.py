@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import DetailView, ListView
 
-from services.ai_translate_service import ai_translate_text, LANGUAGES
+from services.ai_translate_service import LANGUAGES, ai_translate_cv
 from services.email_service import is_email_valid
 from services.pdf_service import get_pdf_filename, html_template_to_pdf
 from .models import CV
@@ -61,18 +61,12 @@ def cv_translate(request, pk):
         return HttpResponse(content="Language is missing.", status=400)
 
     cv = get_object_or_404(CV.objects.prefetch_related('skills', 'projects', 'contacts'), pk=pk)
-    translated_cv = model_to_dict(cv)
-    translated_cv['skills'] = {'all': cv.skills.values('skill')}
-    translated_cv['projects'] = {'all': cv.projects.values('project', 'description', 'start_date', 'end_date')}
-    translated_cv['contacts'] = {'all': cv.contacts.values('contact', 'option')}
+    cv_dict = model_to_dict(cv)
+    cv_dict['skills'] = {'all': cv.skills.values('skill')}
+    cv_dict['projects'] = {'all': cv.projects.values('project', 'description', 'start_date', 'end_date')}
+    cv_dict['contacts'] = {'all': cv.contacts.values('contact', 'option')}
 
-    translated_cv['bio'] = ai_translate_text(translated_cv['bio'], language)
-
-    for pi, project in enumerate(translated_cv['projects']['all']):
-        translated_cv['projects']['all'][pi]['description'] = ai_translate_text(project['description'], language)
-
-    for ci, contact in enumerate(translated_cv['contacts']['all']):
-        translated_cv['contacts']['all'][ci]['option'] = ai_translate_text(contact['option'], language)
+    translated_cv = ai_translate_cv(cv_dict, language)
 
     return render(request, "main/cv_detail_view.html", {'cv': translated_cv, 'languages': LANGUAGES})
 
